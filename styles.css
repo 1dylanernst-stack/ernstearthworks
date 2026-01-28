@@ -19,24 +19,35 @@ a{color:inherit;text-decoration:none}
 .header{
   position:relative;
   background:
-   url("logo.png") center/600px no-repeat,
     radial-gradient(1200px 700px at 20% 10%, rgba(110,231,255,.18), transparent 60%),
     radial-gradient(900px 500px at 85% 20%, rgba(139,255,176,.14), transparent 60%),
     linear-gradient(180deg, #0b0f14 0%, #0b0f14 40%, #0d131c 100%);
   border-bottom:1px solid var(--line);
 }
 
+/* LOGO WATERMARK */
+.header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    url("logo.png") center 55% / 520px no-repeat;
+  opacity:0.18;          /* controls logo visibility */
+  pointer-events:none;
+}
+
+/* DARK OVERLAY */
 .header::before{
   content:"";
   position:absolute;
   inset:0;
- background:rgba(11,15,20,.60);
+  background:rgba(11,15,20,.55);
 }
 
 .header > *{
   position:relative;
+  z-index:2;
 }
-
 .nav{
   display:flex;
   align-items:center;
