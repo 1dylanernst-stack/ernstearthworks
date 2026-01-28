@@ -19,7 +19,7 @@ a{color:inherit;text-decoration:none}
 .header{
   position:relative;
   background:
-    url("ernst earthworks logo.png") center/600px no-repeat,
+    url("logo.png") center/520px no-repeat,
     radial-gradient(1200px 700px at 20% 10%, rgba(110,231,255,.18), transparent 60%),
     radial-gradient(900px 500px at 85% 20%, rgba(139,255,176,.14), transparent 60%),
     linear-gradient(180deg, #0b0f14 0%, #0b0f14 40%, #0d131c 100%);
@@ -30,7 +30,7 @@ a{color:inherit;text-decoration:none}
   content:"";
   position:absolute;
   inset:0;
- background:rgba(11,15,20,.55);
+ background:rgba(11,15,20,.60);
 }
 
 .header > *{
