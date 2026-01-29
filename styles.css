@@ -26,35 +26,35 @@ a{color:inherit;text-decoration:none}
 
 .container{width:min(1100px,92%);margin:0 auto}
 
-/* ========= SITE-WIDE LOGO WATERMARK BACKGROUND (SCROLLS WITH PAGE) ========= */
+/* ========= SITE-WIDE LOGO WATERMARK (VISIBLE WHILE SCROLLING) ========= */
 body{
   position: relative;
   overflow-x: hidden;
   background: var(--bg);
 }
 
-/* Logo watermark (covers entire site even when scrolling) */
+/* Logo watermark */
 body::before{
   content:"";
   position: fixed;
   inset: 0;
   background: url("assets/logo.png") center / 1800px no-repeat;
-  opacity: 0.20;   /* ↑ more visible logo */
+  opacity: 0.20;              /* increase/decrease to taste */
   pointer-events: none;
   z-index: 0;
 }
 
+/* Dark overlay on top of logo */
 body::after{
   content:"";
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.58); /* ↓ lighter overlay */
+  background: rgba(0,0,0,.58); /* darker = logo less visible */
   pointer-events: none;
   z-index: 0;
 }
 
-
-/* Keep all site content above the background layers */
+/* Keep site content above background layers */
 header, main, section, footer, .container{
   position: relative;
   z-index: 1;
@@ -94,6 +94,7 @@ header, main, section, footer, .container{
   height:100%;
   object-fit:cover;
   border-radius:18px;
+  display:block;
 }
 
 .brand-name{font-weight:800;letter-spacing:.2px}
@@ -136,16 +137,14 @@ header, main, section, footer, .container{
 
 /* ========= CARDS / PANELS ========= */
 .card, .service, .panel, .form, .contact-card{
-  background: rgba(10,14,20,.78); /* keeps everything dark */
+  background: rgba(10,14,20,.78);
   border:1px solid rgba(182,195,214,.16);
   border-radius:var(--radius);
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
 }
 
-.card{
-  padding:16px;
-}
+.card{padding:16px}
 .card-title{font-weight:800;margin-bottom:6px}
 .card-text{color:var(--muted);font-size:14px;line-height:1.4}
 
@@ -153,11 +152,9 @@ header, main, section, footer, .container{
 .section{
   padding:60px 0;
   border-bottom:1px solid var(--line);
-  background: transparent; /* let site background show through */
+  background: transparent;
 }
-.section.alt{
-  background: transparent; /* NO white/gray backgrounds */
-}
+.section.alt{background: transparent}
 
 .section h2{font-size:28px;margin:0 0 8px}
 .subhead{color:var(--muted);margin:0 0 22px}
@@ -168,9 +165,7 @@ header, main, section, footer, .container{
   gap:14px;
 }
 
-.service{
-  padding:18px;
-}
+.service{padding:18px}
 .service h3{margin:0 0 8px;font-size:17px}
 .service p{margin:0;color:var(--muted);line-height:1.5}
 
@@ -183,17 +178,13 @@ header, main, section, footer, .container{
 
 .list{margin:0;padding-left:18px;color:var(--muted);line-height:1.8}
 
-.panel{
-  padding:18px;
-}
+.panel{padding:18px}
 .panel-title{font-weight:800;margin-bottom:8px}
 .panel-text{color:var(--muted);line-height:1.55;margin:0 0 10px}
 .panel-note{font-size:13px;color:var(--muted);opacity:.9}
 
 /* ========= CONTACT ========= */
-.contact{
-  background: transparent; /* keep it dark */
-}
+.contact{background: transparent}
 
 .contact-grid{
   display:grid;
@@ -202,9 +193,7 @@ header, main, section, footer, .container{
   align-items:start;
 }
 
-.form{
-  padding:18px;
-}
+.form{padding:18px}
 
 label{display:block;font-size:13px;color:var(--muted);margin-bottom:12px}
 
@@ -223,9 +212,7 @@ input:focus,textarea:focus{border-color:rgba(110,231,255,.45)}
 .fine{margin:12px 0 0;color:var(--muted);font-size:13px}
 .fine a{text-decoration:underline}
 
-.contact-card{
-  padding:18px;
-}
+.contact-card{padding:18px}
 .contact-title{font-weight:800;margin-bottom:10px}
 .contact-item{color:var(--muted);margin:8px 0}
 .contact-item span{color:var(--text);font-weight:700;margin-right:8px}
@@ -237,11 +224,66 @@ input:focus,textarea:focus{border-color:rgba(110,231,255,.45)}
 .footer-links{display:flex;gap:14px}
 .footer-links a:hover{color:var(--text)}
 
-/* ========= MOBILE ========= */
+/* ========= MOBILE POLISH ========= */
 @media (max-width: 900px){
-  .menu{display:none}
-  .hero-cards{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr}
+  .container{width:min(1100px,94%)}
+
+  /* Make watermark nicer on phones */
+  body::before{
+    background-size: 1100px;
+    opacity: 0.16;
+  }
+  body::after{
+    background: rgba(0,0,0,.62);
+  }
+
+  /* Header / Nav */
+  .nav{padding:14px 0}
+  .brand{gap:10px}
+  .logo{width:54px;height:54px;border-radius:14px}
+  .logo img{border-radius:14px}
+
+  /* Show menu as a compact wrap instead of hiding */
+  .menu{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:10px 14px;
+  }
+  .menu a{font-size:13px}
+
+  /* Hero */
+  .hero{padding:26px 0 28px}
+  .hero h1{font-size:34px;line-height:1.08}
+  .hero p{font-size:16px;line-height:1.55}
+  .hero-cta{gap:10px}
+
+  /* Buttons full width on mobile */
+  .hero-cta .btn,
+  .hero-cta .btn-ghost{
+    width:100%;
+    text-align:center;
+  }
+
+  /* Layouts */
+  .hero-cards{grid-template-columns:1fr;gap:12px;margin-top:18px}
+  .grid{grid-template-columns:1fr;gap:12px}
   .split{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
+
+  /* Spacing */
+  .section{padding:34px 0}
+  .section h2{font-size:22px}
+
+  /* Cards */
+  .card, .service, .panel, .form, .contact-card{
+    padding:14px;
+    border-radius:16px;
+  }
+}
+
+/* Super small phones */
+@media (max-width: 420px){
+  .hero h1{font-size:30px}
+  .logo{width:48px;height:48px}
 }
