@@ -38,21 +38,21 @@ body::before{
   content:"";
   position: fixed;
   inset: 0;
-  background: url("assets/logo.png") center / 1600px no-repeat;
-  opacity: 0.12;            /* adjust 0.06–0.18 */
+  background: url("assets/logo.png") center / 1800px no-repeat;
+  opacity: 0.20;   /* ↑ more visible logo */
   pointer-events: none;
   z-index: 0;
 }
 
-/* Dark overlay on top of the logo so text stays readable */
 body::after{
   content:"";
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.70);
+  background: rgba(0,0,0,.58); /* ↓ lighter overlay */
   pointer-events: none;
   z-index: 0;
 }
+
 
 /* Keep all site content above the background layers */
 header, main, section, footer, .container{
